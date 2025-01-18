@@ -1,3 +1,4 @@
-/bin
-.exe
-.editorconfig
+bin/
+*.exe
+.editorconfig/
+.DS_Store
