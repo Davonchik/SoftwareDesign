@@ -30,4 +30,9 @@ public class CarStorage : ICarProvider
 
         return car;
     }
+
+    public IEnumerable<Car> GetAllCars()
+    {
+        return _cars.ToList();
+    }
 }

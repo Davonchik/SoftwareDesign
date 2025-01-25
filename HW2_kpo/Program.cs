@@ -23,15 +23,23 @@ internal class Program
         carService.AddCar(handCarFactory, new EmptyEngineParams());
         carService.AddCar(handCarFactory, new EmptyEngineParams());
 
-        Console.WriteLine("=== Покупатели ===");
+        Console.WriteLine("=== Покупатели (before) ===");
         foreach (var customer in customerStorage.GetCustomers())
             Console.WriteLine(customer);
+
+        Console.WriteLine("\n=== Список автомобилей в наличии (до продажи) ===");
+        foreach (var car in carService.GetAllCars())
+            Console.WriteLine(car);
 
         Console.WriteLine("\n=== Продажа автомобилей ===\n");
         hseCarService.SellCars();
 
-        Console.WriteLine("=== Покупатели ===");
+        Console.WriteLine("=== Покупатели (after) ===");
         foreach (var customer in customerStorage.GetCustomers())
             Console.WriteLine(customer);
+
+        Console.WriteLine("\n=== Список автомобилей в наличии (после продажи) ===");
+        foreach (var car in carService.GetAllCars())
+            Console.WriteLine(car);
     }
 }

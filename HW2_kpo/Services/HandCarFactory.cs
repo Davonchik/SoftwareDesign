@@ -1,7 +1,7 @@
 ﻿using kpo.HW2_kpo.Models;
 using kpo.HW2_kpo.Services.Abstractions;
 
-namespace S2.HseCarShop.Services;
+namespace kpo.HW2_kpo.Services;
 
 /// <summary>
 /// Fabrica for creating cars with hand drive.
