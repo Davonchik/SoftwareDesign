@@ -35,6 +35,6 @@ public class CarService : ICarProvider
 
     public IEnumerable<Car> GetAllCars()
     {
-        return _cars.ToList();
+        return _cars.ToList().AsReadOnly();
     }
 }
