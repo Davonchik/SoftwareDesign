@@ -7,9 +7,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var carService = new CarStorage();
+        var carService = new CarService();
         var customerStorage = new CustomersStorage();
-        var hseCarService = new CarShopService(carService, customerStorage);
+        var hseCarService = new HseCarService(carService, customerStorage);
         var pedalCarFactory = new PedalCarFactory();
         var handCarFactory = new HandCarFactory();
 
@@ -27,7 +27,7 @@ internal class Program
         foreach (var customer in customerStorage.GetCustomers())
             Console.WriteLine(customer);
 
-        Console.WriteLine("\n=== Список автомобилей в наличии (до продажи) ===");
+        Console.WriteLine("\n=== Список автомобилей в наличии (before) ===");
         foreach (var car in carService.GetAllCars())
             Console.WriteLine(car);
 
@@ -38,7 +38,7 @@ internal class Program
         foreach (var customer in customerStorage.GetCustomers())
             Console.WriteLine(customer);
 
-        Console.WriteLine("\n=== Список автомобилей в наличии (после продажи) ===");
+        Console.WriteLine("\n=== Список автомобилей в наличии (after) ===");
         foreach (var car in carService.GetAllCars())
             Console.WriteLine(car);
     }

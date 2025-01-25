@@ -3,7 +3,7 @@ using kpo.HW2_kpo.Services.Abstractions;
 
 namespace kpo.HW2_kpo.Services;
 
-public class CarShopService
+public class HseCarService
 {
     /// <summary>
     /// Service that provides cars.
@@ -18,7 +18,7 @@ public class CarShopService
     /// <summary>
     /// Class constructor.
     /// </summary>
-    public CarShopService(ICarProvider carProvider, ICustomersProvider customersProvider)
+    public HseCarService(ICarProvider carProvider, ICustomersProvider customersProvider)
     {
         ArgumentNullException.ThrowIfNull(carProvider, nameof(carProvider));
         ArgumentNullException.ThrowIfNull(customersProvider, nameof(customersProvider));
@@ -36,33 +36,13 @@ public class CarShopService
             if (customer.Car != null)
                 continue;
 
-            var suitableEngineType = DetermineEngineType(customer);
-
-            if (!suitableEngineType.HasValue)
-                continue;
-
-            var car = _carProvider.GetCar(suitableEngineType.Value);
+            var car = _carProvider.TakeCar(customer);
 
             if (car == null)
                 continue;
 
-            customer.Car = car; // иначе вручаем автомобиль
+            customer.Car = car;
         }
     }
-
-    /// <summary>
-    /// Determining the type of engine that would suit the user based on physical parameters.
-    /// </summary>
-    /// <param name="customer">Customer.</param>
-    /// <returns>Returns required engine type.</returns>
-    private static EngineType? DetermineEngineType(Customer customer)
-    {
-        if (customer.LegStrength > 5)
-            return EngineType.Pedal;
-
-        if (customer.HandStrength > 5)
-            return EngineType.Hand;
-
-        return null;
-    }
+    
 }

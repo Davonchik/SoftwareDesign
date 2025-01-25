@@ -7,10 +7,15 @@ namespace kpo.HW2_kpo.Models;
 /// </summary>
 public class HandEngine : IEngine
 {
-    public EngineType Type => EngineType.Hand;
+    public HandEngine() { }
+
+    public bool IsCompatible(Customer customer)
+    {
+        return customer.HandStrength > 5;
+    }
 
     public override string ToString()
     {
-        return $"Тип: {Type}";
+        return "Тип: ручной привод";
     }
 }

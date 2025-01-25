@@ -4,7 +4,7 @@ using kpo.HW2_kpo.Services.Abstractions;
 
 namespace kpo.HW2_kpo.Services;
 
-public class CarStorage : ICarProvider
+public class CarService : ICarProvider
 {
     /// <summary>
     /// Collection for cars saving.
@@ -17,17 +17,19 @@ public class CarStorage : ICarProvider
     public void AddCar<TParams>(ICarFactory<TParams> carFactory, TParams carParams)
         where TParams : EngineParamsBase
     {
-        var car = carFactory.CreateCar(carParams);
+        var car = carFactory.CreateCar(carParams, Guid.NewGuid());
         _cars.AddLast(car);
     }
 
-    public Car? GetCar(EngineType engineType)
+    public Car? TakeCar(Customer customer)
     {
-        var car = _cars.FirstOrDefault(car => car.Engine.Type == engineType);
+        var car = _cars.FirstOrDefault(x => x.IsCompatible(customer));
 
-        if (car != null)
+        if (car is not null)
+        {
             _cars.Remove(car);
-
+        }
+        
         return car;
     }
 

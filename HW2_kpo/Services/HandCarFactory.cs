@@ -8,9 +8,9 @@ namespace kpo.HW2_kpo.Services;
 /// </summary>
 public class HandCarFactory : ICarFactory<EmptyEngineParams>
 {
-    public Car CreateCar(EmptyEngineParams carParams)
+    public Car CreateCar(EmptyEngineParams engineParams, Guid numberOfCar)
     {
         var engine = new HandEngine();
-        return new Car(engine, number: Guid.NewGuid());
+        return new Car(engine, numberOfCar);
     }
 }

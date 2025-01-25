@@ -18,6 +18,11 @@ public class Car
         Number = number;
     }
 
+    public bool IsCompatible(Customer customer) 
+    {
+        return Engine.IsCompatible(customer);
+    }
+
     public override string ToString()
     {
         return $"Номер: {Number}, Двигатель: {{ {Engine} }}";

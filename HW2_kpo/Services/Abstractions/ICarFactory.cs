@@ -11,5 +11,5 @@ public interface ICarFactory<TParams> where TParams : EngineParamsBase
     /// <summary>
     /// Car creation method.
     /// </summary>
-    Car CreateCar(TParams carParams);
+    Car CreateCar(TParams engineParams, Guid numberOfCar);
 }

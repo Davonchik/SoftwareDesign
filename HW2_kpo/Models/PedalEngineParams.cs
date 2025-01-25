@@ -7,9 +7,6 @@ namespace kpo.HW2_kpo.Models;
 /// </summary>
 public record PedalEngineParams : EngineParamsBase
 {
-    /// <summary>
-    /// Pedal size.
-    /// </summary>
     public uint PedalSize { get; }
 
     public PedalEngineParams(uint pedalSize)
